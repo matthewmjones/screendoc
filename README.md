@@ -15,9 +15,9 @@ To install this class file simply clone it into your local repository, then run 
 I wrote this in a day - it's probably very buggy and certainly not perfect. But it works. I also spent some time looking at good practice for choosing fonts and colouring these things but I'm no expert.
 
 ## Theorem style environments
-The class comes with the following environments for creating theorems etc. They are numbered consecutively and we use the package ```tcolorbox``` so the format is:
+The class comes with the following environments for creating theorems etc. They are numbered consecutively and we use the package ```tcolorbox```. Use them as normal, for example:
 
-    \begin{thm}{<optional title>}{<optional label>}
+    \begin{thm}
         ...
     \end{thm}
 

@@ -1,0 +1,34 @@
+\documentclass[phone]{screendoc}
+
+
+\title{A Title}
+\module{MATH101}
+
+\usepackage{blindtext}
+
+\begin{document}
+    \maketitle
+    \chapter{In the beginning}
+    \section{A section}
+    \blindtext
+    \subsection*{But then this happened}
+    \blindtext
+    \begin{activity}[http://twitter.com]
+        An activity with a link.
+    \end{activity}
+    \begin{activity}
+        An activity without a link. 
+    \end{activity}
+
+    \subsubsection*{Some examples}
+    \blindtext
+    \begin{example}[http://www.youtube.com]
+        An example with a link. 
+    \end{example}
+    \begin{example}
+        An example without a link. Also, by the way, 
+        \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]
+    \end{example}
+    
+    \withlink{\blindtext}{https://en.wikipedia.org/wiki/Mathematics}
+\end{document} 

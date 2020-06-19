@@ -52,9 +52,9 @@
 
 
 \newfontfamily{\chapterfont}[SizeFeatures = {Size = 36}]{Montserrat SemiBold}
-\newfontfamily{\sectionfont}[SizeFeatures = {Size = 16}]{Montserrat SemiBold}
-\newfontfamily{\subsectionfont}[SizeFeatures = {Size = 14}]{Montserrat SemiBold}
-\newfontfamily{\subsubsectionfont}[SizeFeatures = {Size = 12}]{Montserrat}
+\newfontfamily{\sectionfont}[SizeFeatures = {Size = 18}]{Montserrat SemiBold}
+\newfontfamily{\subsectionfont}[SizeFeatures = {Size = 16}]{Montserrat SemiBold}
+\newfontfamily{\subsubsectionfont}[SizeFeatures = {Size = 14}]{Montserrat SemiBold}
 \newfontfamily{\theoremstylefont}[SizeFeatures = {Size = 14}]{Montserrat}
 
 \RequirePackage[english]{babel}
@@ -93,20 +93,19 @@
 \titlespacing{\section}
         {15pc}{.5ex plus .1ex minus .2ex}{1pc}
 
-\titleformat{\subsection}[leftmargin]
+\titleformat{\subsection}[drop]
     {   \subsectionfont\filright}
-        {\thesection}{.5em}{}
-\titlespacing{\section}
+        {\thesubsection}{.5em}{}
+\titlespacing{\subsection}
         {15pc}{.5ex plus .1ex minus .2ex}{1pc}
 
-\titleformat{\subsubsection}[leftmargin]
+\titleformat{\subsubsection}[drop]
     {   \subsubsectionfont\filright}
-        {\thesection}{.5em}{}
-\titlespacing{\section}
+        {\thesubsubsection}{.5em}{}
+\titlespacing{\subsubsection}
         {15pc}{.5ex plus .1ex minus .2ex}{1pc}
 
 %%%%% Theorem type environments
-
 \RequirePackage[most]{tcolorbox}
 
 \RequirePackage{amsthm, amsmath, amsfonts}
@@ -245,7 +244,7 @@
                 frame hidden
                 ]
                 \begin{center}
-                    \href{#2}{\includegraphics[width = \iconsize]{img/lineal colour/012-online course.png}}
+                    \href{#2}{\includegraphics[width = \iconsize]{012c-online course.png}}
                 \end{center}
             \end{tcolorbox}
         \end{tcbraster}
@@ -272,7 +271,7 @@
                 frame hidden
                 ]
                 \begin{center}
-                    \href{#2}{\includegraphics[width = \iconsize]{img/lineal colour/012-online course.png}}
+                    \href{#2}{\includegraphics[width = \iconsize]{012c-online course.png}}
                 \end{center}
             \end{tcolorbox}
         \end{tcbraster}
@@ -282,9 +281,10 @@
 \RequirePackage{ifmtarg}
 
 %%%% Activity and example environment
+\newtheorem{activitybox}{Activity}
+\newtheorem{examplebox}[activitybox]{Example}
 
 \ifphone
-\newtheorem{activitybox}{Activity}
 \tcolorboxenvironment{activitybox}%
     {
         enhanced,
@@ -297,8 +297,8 @@
     \newpage
     \begin{tcbraster}[raster columns = 1, raster rows = 2]
         \begin{tcolorbox}[boxrule = 0pt, colback = \thepagecolor, colframe = white, frame hidden, halign=flush right]
-            \@ifmtarg{#1}{\includegraphics[width = \iconsize]{img/lineal/026-marker.png}}%
-                    {\href{#1}{\includegraphics[width = \iconsize]{img/lineal colour/026-marker.png}}}
+            \@ifmtarg{#1}{\includegraphics[width = \iconsize]{026-marker.png}}%
+                    {\href{#1}{\includegraphics[width = \iconsize]{026c-marker.png}}}
         \end{tcolorbox}
         \begin{activitybox}{}{}
     }{
@@ -306,7 +306,6 @@
     \end{tcbraster}
     }
 
-\newtheorem{examplebox}[activitybox]{Example}
 \tcolorboxenvironment{examplebox}%
 {
     enhanced,
@@ -319,8 +318,8 @@
     \newpage
 \begin{tcbraster}[raster columns = 1, raster rows = 2]
     \begin{tcolorbox}[boxrule = 0pt, colback = \thepagecolor, colframe = white, frame hidden, halign=flush right]
-        \@ifmtarg{#1}{\includegraphics[width = \iconsize]{img/lineal/013-thinking.png}}%
-            {\href{#1}{\includegraphics[width = \iconsize]{img/lineal colour/013-thinking.png}}}
+        \@ifmtarg{#1}{\includegraphics[width = \iconsize]{013-thinking.png}}%
+            {\href{#1}{\includegraphics[width = \iconsize]{013c-thinking.png}}}
     \end{tcolorbox}
     \begin{examplebox}{}{}
 }{
@@ -328,7 +327,6 @@
 \end{tcbraster}
 }
 \else
-    \newtheorem{activitybox}{Activity}
     \tcolorboxenvironment{activitybox}%
         {
             enhanced,
@@ -338,18 +336,21 @@
             raster multicolumn = 5
         }
     \newenvironment{activity}[1][]{
+        \vspace{1.5\baselineskip}
+
         \begin{tcbraster}[raster columns = 6, raster equal height = rows]
-            \begin{tcolorbox}[boxrule = 0pt, colback = \thepagecolor, colframe = white, frame hidden]
-                \@ifmtarg{#1}{\includegraphics[width = \iconsize]{img/lineal/026-marker.png}}%
-                        {\href{#1}{\includegraphics[width = \iconsize]{img/lineal colour/026-marker.png}}}
+            \begin{tcolorbox}[boxrule = 0pt, colback = \thepagecolor, colframe = \thepagecolor, frame hidden]
+                \@ifmtarg{#1}{\includegraphics[width = \iconsize]{026-marker.png}}%
+                        {\href{#1}{\includegraphics[width = \iconsize]{026c-marker.png}}}
             \end{tcolorbox}
             \begin{activitybox}{}{}
         }{
         \end{activitybox}
         \end{tcbraster}
+        \vspace{1.5\baselineskip}
+
         }
 
-    \newtheorem{examplebox}[activitybox]{Example}
     \tcolorboxenvironment{examplebox}%
     {
         enhanced,
@@ -360,15 +361,19 @@
     }
 
 \newenvironment{example}[1][]{
+    \vspace*{1.5\baselineskip}
+
     \begin{tcbraster}[raster columns = 6, raster equal height = rows]
         \begin{tcolorbox}[boxrule = 0pt, colback = \thepagecolor, colframe = white, frame hidden]
-            \@ifmtarg{#1}{\includegraphics[width = \iconsize]{img/lineal/013-thinking.png}}%
-                {\href{#1}{\includegraphics[width = \iconsize]{img/lineal colour/013-thinking.png}}}
+            \@ifmtarg{#1}{\includegraphics[width = \iconsize]{013-thinking.png}}%
+                {\href{#1}{\includegraphics[width = \iconsize]{013c-thinking.png}}}
         \end{tcolorbox}
         \begin{examplebox}{}{}
     }{
     \end{examplebox}
     \end{tcbraster}
+    \vspace{1.5\baselineskip}
+
     }
 \fi
 

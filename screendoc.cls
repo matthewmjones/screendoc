@@ -4,6 +4,8 @@
 \newlength{\iconsize}
 \setlength{\iconsize}{20mm}
 
+\RequirePackage{amsthm, amsmath, amsfonts}
+
 \newif\ifphone % Set to true if in phone version
 
 \DeclareOption{10pt}{\OptionNotUsed}
@@ -90,30 +92,31 @@
 \titleformat{\section}[drop]
     {   \sectionfont\large\filright}
         {\thesection}{0.5em}{}
-\titlespacing{\section}
+\titlespacing*{\section}
         {15pc}{.5ex plus .1ex minus .2ex}{1pc}
 
 \titleformat{\subsection}[drop]
     {   \subsectionfont\filright}
         {\thesubsection}{.5em}{}
-\titlespacing{\subsection}
+\titlespacing*{\subsection}
         {15pc}{.5ex plus .1ex minus .2ex}{1pc}
 
 \titleformat{\subsubsection}[drop]
     {   \subsubsectionfont\filright}
         {\thesubsubsection}{.5em}{}
-\titlespacing{\subsubsection}
+\titlespacing*{\subsubsection}
         {15pc}{.5ex plus .1ex minus .2ex}{1pc}
 
 %%%%% Theorem type environments
 \RequirePackage[most]{tcolorbox}
 
-\RequirePackage{amsthm, amsmath, amsfonts}
+
 
 \theoremstyle{plain}% from 'amsthm'
 \newtheorem{thm}{Theorem}% from 'amsthm'
 \tcolorboxenvironment{thm}%
 {   theorem style=change apart,
+    breakable,
     enhanced,
     arc=0mm,
     outer arc=0mm,
@@ -133,6 +136,7 @@
 \newtheorem{lem}[thm]{Lemma}% from 'amsthm'
 \tcolorboxenvironment{lem}%
 {   theorem style=change apart,
+    breakable,
     enhanced,
     arc=0mm,
     outer arc=0mm,
@@ -152,6 +156,7 @@
 \newtheorem{prop}[thm]{Proposition}% from 'amsthm'
 \tcolorboxenvironment{prop}%
 {   theorem style=change apart,
+    breakable,
     enhanced,
     arc=0mm,
     outer arc=0mm,
@@ -171,6 +176,7 @@
 \newtheorem{cor}[thm]{Corollary}% from 'amsthm'
 \tcolorboxenvironment{cor}%
 {   theorem style=change apart,
+    breakable,
     enhanced,
     arc=0mm,
     outer arc=0mm,
@@ -189,7 +195,7 @@
 
 \newtheorem{dfn}[thm]{Definition}
 \tcolorboxenvironment{dfn}%
-{
+{   breakable,
     leftrule = 4mm,
     rightrule = 0mm,
     toprule = 0mm,
@@ -294,7 +300,6 @@
     }
 
 \newenvironment{activity}[1][]{
-    \newpage
     \begin{tcbraster}[raster columns = 1, raster rows = 2]
         \begin{tcolorbox}[boxrule = 0pt, colback = \thepagecolor, colframe = white, frame hidden, halign=flush right]
             \@ifmtarg{#1}{\includegraphics[width = \iconsize]{026-marker.png}}%
@@ -315,7 +320,6 @@
 }
 
 \newenvironment{example}[1][]{
-    \newpage
 \begin{tcbraster}[raster columns = 1, raster rows = 2]
     \begin{tcolorbox}[boxrule = 0pt, colback = \thepagecolor, colframe = white, frame hidden, halign=flush right]
         \@ifmtarg{#1}{\includegraphics[width = \iconsize]{013-thinking.png}}%
@@ -347,8 +351,7 @@
         }{
         \end{activitybox}
         \end{tcbraster}
-        \vspace{1.5\baselineskip}
-
+        \bigskip
         }
 
     \tcolorboxenvironment{examplebox}%
@@ -361,7 +364,7 @@
     }
 
 \newenvironment{example}[1][]{
-    \vspace*{1.5\baselineskip}
+    \vspace*{\baselineskip}
 
     \begin{tcbraster}[raster columns = 6, raster equal height = rows]
         \begin{tcolorbox}[boxrule = 0pt, colback = \thepagecolor, colframe = white, frame hidden]
@@ -372,10 +375,14 @@
     }{
     \end{examplebox}
     \end{tcbraster}
-    \vspace{1.5\baselineskip}
-
+    \vspace*{\baselineskip}
     }
 \fi
+
+% Breaks 
+\newcommand{\breakifphone}{\ifphone\newpage\fi}
+\newcommand{\breakifscreen}{\ifphone\else\newpage\fi}
+
 
 % Setting various lengths and other things
 \setlength{\parskip}{2\baselineskip}

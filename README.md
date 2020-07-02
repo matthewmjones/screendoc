@@ -42,9 +42,26 @@ We use coloured icons to represent an active link and monochrome icons to repres
 
 <img src="img/lineal/026-marker.png" alt = "b+w icon" width = 50>
 
-## the `withlink` command
+## The `withlink` command
 I have also provided a `withlink` command that takes two parameters: ```\withlink{<content>}{<URL>}```
 
 As with the `example` and `activity` environments this is meant to link written content with online content.
 
+## Conditional page breaks
+Sometimes, especially in phone mode, the page breaks can lead to poor readability. The commands
+```
+\breakifphone
+\breakifscreen
+```
+offer conditional breaking. 
 
+## Adding images
+To add images we recommend using the [`adjustbox`](https://ctan.org/pkg/adjustbox?lang=en) package, then using its `max size` option. For example:
+
+```
+\usepackage[export]{adjustbox}
+
+\begin{document}
+\includegraphics[max size = {.9\textwidth}{.9\textheight}]{images/myimage.jpg}
+\end{document}
+```

@@ -383,6 +383,22 @@
 \newcommand{\breakifphone}{\ifphone\newpage\fi}
 \newcommand{\breakifscreen}{\ifphone\else\newpage\fi}
 
+% onphone and onscreen environments
+\newenvironment{onphone}{
+        \newbox\tempbox%
+        \begin{lrbox}{\tempbox}\begin{minipage}{\linewidth}%
+}{
+        \end{minipage}\end{lrbox}
+        \ifphone\usebox{\tempbox}\fi
+}
+\newenvironment{onscreen}{
+    \newbox\tempbox%
+    \begin{lrbox}{\tempbox}\begin{minipage}{\linewidth}%
+}{
+    \end{minipage}\end{lrbox}
+    \ifphone\else\usebox{\tempbox}\fi
+}
+
 
 % Setting various lengths and other things
 \setlength{\parskip}{2\baselineskip}

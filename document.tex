@@ -1,4 +1,4 @@
-\documentclass[phone]{screendoc}
+\documentclass[screen]{screendoc}
 
 
 \title{A Title}
@@ -13,22 +13,36 @@
     \blindtext
     \subsection*{But then this happened}
     \blindtext
+
     \begin{activity}[http://twitter.com]
         An activity with a link.
     \end{activity}
+
     \begin{activity}
         An activity without a link. 
     \end{activity}
 
     \subsubsection*{Some examples}
     \blindtext
+
     \begin{example}[http://www.youtube.com]
         An example with a link. 
     \end{example}
+
     \begin{example}
         An example without a link. Also, by the way, 
         \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]
     \end{example}
     
     \withlink{\blindtext}{https://en.wikipedia.org/wiki/Mathematics}
+
+    \begin{onphone}
+        This only appears on the phone.
+    \end{onphone}
+
+    \begin{onscreen}
+        This only appears on the screen. 
+    \end{onscreen}
+
+    \blindtext[10][12]
 \end{document} 

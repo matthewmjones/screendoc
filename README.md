@@ -55,7 +55,10 @@ Sometimes, especially in phone mode, the page breaks can lead to poor readabilit
 ```
 offer conditional breaking. 
 
-## Adding images
+## Conditional environments
+We have provided two environments, ``onscreen`` and ``onphone`` that are rendered only in ``screen`` or in ``phone`` mode respectively. 
+
+## Adding images
 To add images we recommend using the [`adjustbox`](https://ctan.org/pkg/adjustbox?lang=en) package, then using its `max size` option. For example:
 
 ```
